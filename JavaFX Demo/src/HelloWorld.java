@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
  
-public class HelloWorld extends Application implements EventHandler<ActionEvent> {
+public class HelloWorld extends Application {
 	Button button;
     public static void main(String[] args) {
         launch(args);
@@ -21,7 +21,14 @@ public class HelloWorld extends Application implements EventHandler<ActionEvent>
 		primaryStage.setTitle("My JavaFX Program");
 		button = new Button("Click me!");
 		
-		button.setOnAction(this);
+//		button.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override
+//			public void handle(ActionEvent event) {
+//				System.out.println("You clicked the button!");
+//			}
+//		});
+		
+		button.setOnAction(e -> System.out.println("You clicked the button!"));
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
@@ -31,10 +38,4 @@ public class HelloWorld extends Application implements EventHandler<ActionEvent>
 		primaryStage.show();
 	}
 	
-	@Override
-	public void handle(ActionEvent event) {
-		if (event.getSource() == button) {
-			System.out.println("You clicked the button!");
-		}
-	}
 }
