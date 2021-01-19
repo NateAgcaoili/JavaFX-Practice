@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
  
-public class HelloWorld extends Application {
+public class ConfirmBoxDemo extends Application {
 
 	Stage window;
 	Button button;
@@ -19,10 +19,13 @@ public class HelloWorld extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
-		window.setTitle("Alert Box Demo");
+		window.setTitle("Confirm Box Demo");
 		
 		button = new Button("Click!");
-		button.setOnAction(e -> AlertBox.display("Alert", "This is an alert!"));
+		button.setOnAction(e -> {
+			boolean result = ConfirmBox.display("Confirm Box", "Are you sure you want to proceed?");
+			System.out.println(result);
+		});
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
