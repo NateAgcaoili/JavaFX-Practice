@@ -24,7 +24,7 @@ public class CloseApp extends Application {
 		window.setOnCloseRequest(e -> { //CALLED WHEN USER PUSHES X
 			e.consume(); //consume close request
 			closeProgram();
-		}); 
+		});
 		
 		button = new Button("Close Program");
 		button.setOnAction(e -> {
