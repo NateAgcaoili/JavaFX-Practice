@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,12 +32,12 @@ public class TableViewDemo extends Application {
 		nameColumn.setMinWidth(200);
 		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name")); //use 'name' property of products
 		
-		//Name Column
+		//Price Column
 		TableColumn<Product, Double> priceColumn = new TableColumn<>("Price:");
 		priceColumn.setMinWidth(200);
 		priceColumn.setCellValueFactory(new PropertyValueFactory<>("price")); //use 'name' property of products
 		
-		//Name Column
+		//Quantity Column
 		TableColumn<Product, Integer> quantityColumn = new TableColumn<>("Quantity:");
 		quantityColumn.setMinWidth(200);
 		quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity")); //use 'name' property of products
