@@ -35,12 +35,12 @@ public class TableViewDemo extends Application {
 		//Price Column
 		TableColumn<Product, Double> priceColumn = new TableColumn<>("Price:");
 		priceColumn.setMinWidth(200);
-		priceColumn.setCellValueFactory(new PropertyValueFactory<>("price")); //use 'name' property of products
+		priceColumn.setCellValueFactory(new PropertyValueFactory<>("price")); //use 'price' property of products
 		
 		//Quantity Column
 		TableColumn<Product, Integer> quantityColumn = new TableColumn<>("Quantity:");
 		quantityColumn.setMinWidth(200);
-		quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity")); //use 'name' property of products
+		quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity")); //use 'quantity' property of products
 		
 		table = new TableView<>();
 		table.setItems(getProduct());
