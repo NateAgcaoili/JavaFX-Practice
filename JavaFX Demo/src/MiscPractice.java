@@ -2,51 +2,51 @@ import java.util.Scanner;
 
 public class MiscPractice {
 	public static void main(String[] args) {
+		// Variables
+		int validGrades = 0, rejectedGrades = 0, gradeA = 0, gradeB = 0, gradeC = 0, gradeD = 0, gradeF = 0,
+				examGrade = 0, numGrades;
+		double highGrade = 0, lowGrade = 100;
+		boolean isValid = false;
 		Scanner input = new Scanner(System.in);
-		String temp;
-		
-		// Prompt user for width and rectangle height.
-		
-		System.out.printf("Enter width for rectangle: " );
-		int width = input.nextInt();
-		System.out.printf("Enter height for rectangle: ");
-		int height = input.nextInt();
-		
-		// Error
-		if (width < 1 || height < 1) {
-			System.out.printf("Your rectangle must have a positive height and width.");
-			System.exit(0);
+
+		System.out.print("Number of Grades: ");
+		numGrades = input.nextInt();
+
+		// Get input from user loop
+		for (int i = 0; i < numGrades; i++) {
+			while (isValid == false) {
+				System.out.printf("Enter a grade from 0-100 (%d of %d): ", i + 1, numGrades);
+				examGrade = input.nextInt();
+				if (examGrade >= 0 && examGrade <= 100) {
+					isValid = true;
+				} else {
+					System.out.println("Error: That is not a valid score.");
+				}
+			}
+			if (examGrade > highGrade) {
+				highGrade = examGrade;
+			}
+			if (examGrade < lowGrade) {
+				lowGrade = examGrade;
+			}
+			if (examGrade >= 90 && examGrade <= 100) {
+				gradeA++;
+			} else if (examGrade >= 80 && examGrade < 90) {
+				gradeB++;
+			} else if (examGrade >= 75 && examGrade < 80) {
+				gradeC++;
+			} else if (examGrade >= 70 && examGrade < 75) {
+				gradeD++;
+			} else {
+				gradeF++;
+			}
+			//isValid = false;
 		}
-		
-		// Prompt the user for x,y values for center and point to test
-		System.out.printf("Enter x,y value for center point of rectangle: ");
-		temp = input.next();
-		
-		// Parsing substrings of temp by dividing them based on the index of the comma
-		int centerX = Integer.parseInt(temp.substring(0, temp.indexOf(',')));
-		int centerY = Integer.parseInt(temp.substring(temp.indexOf(',') + 1));
-		
-		System.out.printf("Enter x,y value for test point: ");
-		temp = input.next();
-		
-		// Parsing substrings of temp by dividing them based on the index of the comma
-		int testPointX = Integer.parseInt(temp.substring(0, temp.indexOf(',')));
-		int testPointY = Integer.parseInt(temp.substring(temp.indexOf(',') + 1));
-			
-		double horizDist = Math.sqrt(Math.pow(testPointX - centerX, 2));
-		double vertDist = Math.sqrt(Math.pow(testPointY - centerY, 2));
-		
-		// Create an if determining if the point is in the rectangle.
-		String isIn = "";
-		
-		if (horizDist <= width / 2 && vertDist <= height / 2) {
-			isIn = "is in";
-		} else {
-			isIn = "is not in";			
-		}
-		
-		// Final printf
-		System.out.printf("(%d, %d) %s the triangle centered at (%d, %d) with width %d and height %d", testPointX, testPointY, isIn, centerX, centerY, width, height);	
-			
+
+		System.out.printf("%nValid grades:\t%d" + "%nInvalid grades:\t%d" + "%nHighest grade:\t%.2f"
+				+ "%nLowest grade:\t%.2f%n%n", validGrades, rejectedGrades, highGrade, lowGrade);
+		System.out.printf("As:\t%d" + "%nBs:\t%d" + "%nCs:\t%d" + "%nDs:\t%d" + "%nFs:\t%d%n", gradeA, gradeB, gradeC,
+				gradeD, gradeF);
+
 	}
 }
